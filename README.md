@@ -17,7 +17,7 @@ A jpeg:
 ![An image](jpeg.jpeg)
 ```
 
-Note the imagages must be in your workspace, `http` links will not be included.
+Note the images must be in your workspace, `http` links will not be included.
 
 Then, run the command `MD to HTML: Convert Document to HTML` from either the command paalette or the editor action bar:
 ![image showing location of editor action bar](media/convert-option.png)

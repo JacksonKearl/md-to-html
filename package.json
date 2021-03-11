@@ -3,7 +3,9 @@
 	"publisher": "jakearl",
 	"displayName": "Markdown to Statically-Linked HTML",
 	"description": "Convert md to single html file with data-uri embedded references",
-	"version": "0.0.1",
+	"version": "0.0.3",
+	"enableProposedApi": true,
+	"extensionDependencies": [ "techer.open-in-browser" ],
 	"repository": { "url": "https://github.com/JacksonKearl/md-to-html" },
 	"engines": {
 		"vscode": "^1.54.0"
@@ -12,23 +14,92 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:md-to-html.convertToHTML"
+		"onCommand:md-to-html.convertToHTML",
+		"onCommand:md-to-html.openExample",
+		"onCommand:md-to-html.openMarkdown",
+		"onCommand:md-to-html.openHTML",
+		"onCommand:md-to-html.addKeybinding"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"gettingStarted": [
+			{
+				"id": "md-to-html.openExample",
+				"title": "Open an example folder",
+				"description": "To start, try opening an example folder that has been preconfigured for this tutorial. This is optional, but helps for following along!",
+				"button": {
+					"title": "Open Example",
+					"command": "md-to-html.openExample"
+				},
+				"media": {
+					"path": "media/example-project.png",
+					"altText": "example project"
+				}
+			},
+			{
+				"id": "md-to-html.showPreview",
+				"title": "Preview your Markdown",
+				"description": "Open a markdown file and click the \"Open Preview\" button at the top of the screen to see a preview of your file. This is technically optional, but it updates live and is helpful to check when creating your content!",
+				"button": {
+					"title": "Open Markdown File",
+					"command": "md-to-html.openMarkdown"
+				},
+				"media": {
+					"path": "media/preview.png",
+					"altText": "preview"
+				}
+			},
+			{
+				"id": "md-to-html.convertToHTML",
+				"title": "Create your .html file",
+				"description": "To create the html file, run \"Convert Document to HTML\" from the editor actions context menu, behind the three dots top of the screen. This will create an .html file along side the markdown file.",
+				"button": {
+					"title": "Open Markdown File",
+					"command": "md-to-html.openMarkdown"
+				},
+				"media": {
+					"path": "media/convert-option.png",
+					"altText": "showing editor actions context menu"
+				}
+			},
+			{
+				"id": "md-to-html.openInBrowser",
+				"title": "Open your .html file in the browser",
+				"description": "Test that everything worked by opening the .html file in your browser. First open the html file in vscode, then right click in the editor and choose \"Open in Default Browser\".",
+				"button": {
+					"title": "Open HTML File",
+					"command": "md-to-html.openHTML"
+				},
+				"media": {
+					"path": "media/open-in-browser.png",
+					"altText": "use editor context menu to open an .html file in you browser"
+				}
+			},
+			{
+				"id": "md-to-html.addKeybinding",
+				"title": "Create a keyboard shortcut",
+				"description": "That's all! You can share that single .html file with anyone without needing to bundle the images. To make this even easier in the future, consider adding a keybinding for the \"Convert Document to HTML\" command!",
+				"button": {
+					"title": "Add a keybinding",
+					"command": "md-to-html.addKeybinding"
+				},
+				"media": {
+					"path": "media/add-keybinding.png",
+					"altText": "use the keybindings editor to add a keybinding for this command"
+				}
+			}
+		],
 		"commands": [
 			{
 				"command": "md-to-html.convertToHTML",
 				"title": "Convert Document to HTML",
 				"category": "MD to HTML",
 				"when": "editorLangId == markdown"
-			}
-		],
-		"keybindings": [
+			},
 			{
-				"command": "md-to-html.convertToHTML",
-				"key": "alt+c",
-				"when": "editorLangId == markdown"
+				"command": "md-to-html.openExample",
+				"title": "Open Example",
+				"category": "MD to HTML"
 			}
 		],
 		"menus": {
