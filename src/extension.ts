@@ -5,8 +5,6 @@ import * as marked from 'marked';
 import { dirname } from 'path';
 import { TextEncoder } from 'util';
 
-
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -20,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const documentUri = vscode.window.activeTextEditor!.document.uri;
 		const reads: Map<string, Promise<string>> = new Map();
 		const html = marked.parse(md || '');
+		const errors: { e: Error, url: string }[] = [];
 		const _ = html.replace(/src=\"([^\"]*)\"/g, (match, url) => {
 			const imageUri = vscode.Uri.joinPath(
 				documentUri.with(
@@ -32,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 					var uri = 'data:' + 'image/png' + ';' + 'base64' + ',' + buffer.toString('base64');
 					return uri;
 				} catch (e) {
-					await vscode.window.showErrorMessage(`Error reading file at ${url}, ${e.message}`);
+					errors.push({ url, e });
 					return '';
 				}
 			})());
@@ -42,6 +41,11 @@ export function activate(context: vscode.ExtensionContext) {
 		await Promise.all(([...reads.keys()].map((async key => {
 			read.set(key, await reads.get(key)!);
 		}))));
+
+		if (errors.length) {
+			vscode.window.showErrorMessage(errors.map(({ e, url }) => `Error reading file at ${url}, ${e.message}`).join(' - '));
+		}
+
 		const embedded = html.replace(/src=\"([^\"]*)\"/g, (match, url) => {
 			const documentUri = vscode.window.activeTextEditor!.document.uri;
 			const imageUri = vscode.Uri.joinPath(

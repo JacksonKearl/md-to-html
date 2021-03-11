@@ -1,8 +1,10 @@
 {
 	"name": "md-to-html",
+	"publisher": "jakearl",
 	"displayName": "Markdown to Statically-Linked HTML",
 	"description": "Convert md to single html file with data-uri embedded references",
 	"version": "0.0.1",
+	"repository": { "url": "https://github.com/JacksonKearl/md-to-html" },
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -17,7 +19,8 @@
 		"commands": [
 			{
 				"command": "md-to-html.convertToHTML",
-				"title": "Convert document to HTML File",
+				"title": "Convert Document to HTML",
+				"category": "MD to HTML",
 				"when": "editorLangId == markdown"
 			}
 		],
