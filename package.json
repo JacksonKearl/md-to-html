@@ -78,7 +78,7 @@
 			{
 				"id": "md-to-html.addKeybinding",
 				"title": "Create a keyboard shortcut",
-				"description": "That's all! You can share that single .html file with anyone without needing to bundle the images. To make this even easier in the future, consider adding a keybinding for the \"Convert Document to HTML\" command!",
+				"description": "That's all! You can share that single .html file with anyone without needing to bundle the images. To make this even easier in the future, consider adding a keybinding for the \"Convert Document to HTML\" command.",
 				"button": {
 					"title": "Add a keybinding",
 					"command": "md-to-html.addKeybinding"
