@@ -3,7 +3,7 @@
 	"publisher": "jakearl",
 	"displayName": "Markdown to Statically-Linked HTML",
 	"description": "Convert md to single html file with data-uri embedded references",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"icon": "media/icon.png",
 	"extensionDependencies": [
 		"techer.open-in-browser"
