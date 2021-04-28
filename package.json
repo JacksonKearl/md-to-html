@@ -5,9 +5,6 @@
 	"description": "Convert md to single html file with data-uri embedded references",
 	"version": "0.0.4",
 	"icon": "media/icon.png",
-	"extensionDependencies": [
-		"techer.open-in-browser"
-	],
 	"repository": {
 		"url": "https://github.com/JacksonKearl/md-to-html"
 	},
@@ -19,41 +16,36 @@
 	],
 	"activationEvents": [
 		"onCommand:md-to-html.convertToHTML",
-		"onCommand:md-to-html.openExample",
-		"onCommand:md-to-html.openMarkdown",
-		"onCommand:md-to-html.openHTML",
-		"onCommand:md-to-html.addKeybinding"
+		"onCommand:md-to-html.openExample"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"startEntries": [{
+			"command": "md-to-html.openExample",
+			"description": "Open an example project",
+			"id": "blah",
+			"title": "Open MD Exmple" ,
+			"type": "template-folder"
+		}],
 		"walkthroughs": [
 			{
 				"id": "exampleProject",
 				"title": "Turn Markdown into HTML",
 				"description": "Use this sample project to learn how to convert Markdown to HTML!",
 				"primary": true,
-				"tasks": [
+				"steps": [
 					{
 						"id": "md-to-html.openExample",
 						"title": "Open an example folder",
-						"description": "To start, try opening an example folder that has been preconfigured for this tutorial. This is optional, but helps for following along!",
-						"button": {
-							"title": "Open Example",
-							"command": "md-to-html.openExample"
-						},
+						"description": "To start, try opening an example folder that has been preconfigured for this tutorial. **This is optional**, but helps for following along!\n[Open Example](command:md-to-html.openExample)",
 						"media": {
-							"path": "media/example-project.png",
-							"altText": "example project"
+							"path": "media/openExample.md"
 						}
 					},
 					{
 						"id": "md-to-html.showPreview",
 						"title": "Preview your Markdown",
-						"description": "Open a markdown file and click the \"Open Preview\" button at the top of the screen to see a preview of your file. This is technically optional, but it updates live and is helpful to check when creating your content!",
-						"button": {
-							"title": "Open Markdown File",
-							"command": "md-to-html.openMarkdown"
-						},
+						"description": "Open a markdown file and click the __\"Open Preview\"__ button at the top of the screen to see a preview of your file. **This is technically optional**, but it updates live and is helpful to check when creating your content!\n[Open Markdown File](command:toSide:workbench.action.quickOpen?%22.md%22)",
 						"media": {
 							"path": "media/preview.png",
 							"altText": "preview"
@@ -63,11 +55,7 @@
 					{
 						"id": "md-to-html.convertToHTML",
 						"title": "Create your .html file",
-						"description": "To create the html file, run \"Convert Document to HTML\" from the editor actions context menu, behind the three dots top of the screen. This will create an .html file along side the markdown file.",
-						"button": {
-							"title": "Open Markdown File",
-							"command": "md-to-html.openMarkdown"
-						},
+						"description": "To create the ``.html`` file, run __\"Convert Document to HTML\"__ from the editor actions context menu, behind the three dots top of the screen. This will create an ``.html`` file along side the markdown file.\n[Open Markdown File](command:toSide:workbench.action.quickOpen?%22.md%22)",
 						"media": {
 							"path": "media/convert-option.png",
 							"altText": "showing editor actions context menu"
@@ -77,11 +65,7 @@
 					{
 						"id": "md-to-html.openInBrowser",
 						"title": "Open your .html file in the browser",
-						"description": "Test that everything worked by opening the .html file in your browser. First open the html file in vscode, then right click in the editor and choose \"Open in Default Browser\".",
-						"button": {
-							"title": "Open HTML File",
-							"command": "md-to-html.openHTML"
-						},
+						"description": "Test that everything worked by opening the ``.html`` file in your browser. This requires [installing the open in broswer extension](command:workbench.extensions.installExtension?%22techer.open-in-browser%22).\n First open the html file in vscode, then right click in the editor and choose \"Open in Default Browser\".\n[Open HTML File](command:toSide:workbench.action.quickOpen?%22.html%22)",
 						"media": {
 							"path": "media/open-in-browser.png",
 							"altText": "use editor context menu to open an .html file in your browser"
@@ -91,11 +75,7 @@
 					{
 						"id": "md-to-html.addKeybinding",
 						"title": "Create a keyboard shortcut",
-						"description": "That's all! You can share that single .html file with anyone without needing to bundle the images. To make this even easier in the future, consider adding a keybinding for the \"Convert Document to HTML\" command.",
-						"button": {
-							"title": "Add a keybinding",
-							"command": "md-to-html.addKeybinding"
-						},
+						"description": "That's all! You can share that single ``.html`` file with anyone without needing to bundle the images. To make this even easier in the future, consider adding a keybinding for the \"Convert Document to HTML\" command.\n[Add a keybinding](command:workbench.action.openGlobalKeybindings?%22md-to-html.convertToHTML%22)",
 						"media": {
 							"path": "media/add-keybinding.png",
 							"altText": "use the keybindings editor to add a keybinding for this command"

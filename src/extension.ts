@@ -11,19 +11,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('md-to-html.openExample', () => {
 		vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.joinPath(context.extensionUri, 'sample-folder'));
 	}));
-
-	context.subscriptions.push(vscode.commands.registerCommand('md-to-html.openMarkdown', () => {
-		vscode.commands.executeCommand('workbench.action.quickOpen', '.md');
-	}));
-
-	context.subscriptions.push(vscode.commands.registerCommand('md-to-html.openHTML', () => {
-		vscode.commands.executeCommand('workbench.action.quickOpen', '.html');
-	}));
-
-	context.subscriptions.push(vscode.commands.registerCommand('md-to-html.addKeybinding', () => {
-		vscode.commands.executeCommand('workbench.action.openGlobalKeybindings', 'md-to-html.convertToHTML');
-	}));
-
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
