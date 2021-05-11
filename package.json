@@ -39,7 +39,7 @@
 						"title": "Open an example folder",
 						"description": "To start, try opening an example folder that has been preconfigured for this tutorial. **This is optional**, but helps for following along!\n[Open Example](command:md-to-html.openExample)",
 						"media": {
-							"path": "media/openExample.md"
+							"path": "media/openExample.md"  
 						}
 					},
 					{
