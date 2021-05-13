@@ -39,8 +39,9 @@
 						"title": "Open an example folder",
 						"description": "To start, try opening an example folder that has been preconfigured for this tutorial. **This is optional**, but helps for following along!\n[Open Example](command:md-to-html.openExample)",
 						"media": {
-							"path": "media/openExample.md"  
-						}
+							"path": "media/openExample.md"
+						},
+						"completionEvents": ["extensionInstalled:tyriar.luna-paint"] 
 					},
 					{
 						"id": "md-to-html.showPreview",
@@ -50,7 +51,7 @@
 							"path": "media/preview.png",
 							"altText": "preview"
 						},
-						"doneOn": {"command": "markdown.showPreviewToSide" }
+						"completionEvents": ["onCommand:markdown.showPreviewToSide"]
 					},
 					{
 						"id": "md-to-html.convertToHTML",
@@ -60,7 +61,7 @@
 							"path": "media/convert-option.png",
 							"altText": "showing editor actions context menu"
 						},
-						"doneOn": {"command": "md-to-html.convertToHTML" }
+						"completionEvents": ["onCommand:md-to-html.convertToHTML"]
 					},
 					{
 						"id": "md-to-html.openInBrowser",
@@ -70,7 +71,7 @@
 							"path": "media/open-in-browser.png",
 							"altText": "use editor context menu to open an .html file in your browser"
 						},
-						"doneOn": {"command": "extension.openInDefaultBrowser" }
+						"completionEvents": ["onCommand:extension.openInDefaultBrowser"]
 					},
 					{
 						"id": "md-to-html.addKeybinding",
