@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as marked from 'marked';
-import { dirname } from 'path';
+import { dirname, extname } from 'path';
 import { TextEncoder } from 'util';
 
 // this method is called when your extension is activated
@@ -30,8 +30,20 @@ export function activate(context: vscode.ExtensionContext) {
 				try {
 					const file = await vscode.workspace.fs.readFile(imageUri);
 					const buffer = Buffer.from(file);
-					var uri = 'data:' + 'image/png' + ';' + 'base64' + ',' + buffer.toString('base64');
-					return uri;
+					const mimeTypes: { [key: string]: string } = {
+					'.png': 'image/png',
+					'.jpg': 'image/jpeg',
+					'.jpeg': 'image/jpeg',
+					'.gif': 'image/gif',
+					'.svg': 'image/svg+xml',
+					'.webp': 'image/webp'
+				};
+
+				const ext = extname(imageUri.fsPath).toLowerCase();
+				const mime = mimeTypes[ext] || 'application/octet-stream';
+
+				const uri = `data:${mime};base64,${buffer.toString('base64')}`;
+				return uri;
 				} catch (e) {
 					errors.push({ url, e });
 					return '';
